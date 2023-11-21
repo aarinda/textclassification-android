@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+
+    // Add the Google services Gradle Plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -36,12 +39,19 @@ android {
 }
 
 dependencies {
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+
     implementation(fileTree("libs").include("*.jar"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.android.support.constraint:constraint-layout:2.0.4")
     implementation("org.jetbrains:annotations:15.0")
 
     // TODO 1: Add Firebase ML dependencies
+
+    // When using the BoM, don't specify versions in Firebase Dependencies
+    implementation("com.google.firebase:firebase-analytics")
+
 
     // TODO 4: Add TFLite Task API (Text) dependency
 
